@@ -175,6 +175,8 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 </p>
 </details>
 
+---
+
 ### Verify in the Azure Portal
 
 Navigate to the [Azure portal](https://portal.azure.com/) and verify the new resource group exists.
