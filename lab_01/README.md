@@ -4,20 +4,19 @@
 
 In this lab, you will use Terraform to create azure resources in your Azure subscription.
 
-In this lab, you will learn:
+You will learn:
 
-* How to initialize Terraform
-* Run a Terraform plan
-* Run a Terraform apply
-* Run a Terraform destroy
+* Authentication with Azure using the Azure CLI
+* The Terraform workflow
 
 ## Lab Exercise
 
-* Change directory into a folder specific to this lab.
-* For example: `cd terraform-workshop/lab_01/`.
-* Create a file named `main.tf` and add a single Resource Group resource.
-* Replace `{PREFIX}` with your initials or something unique. i.e `jb-my-rg`
+### Create Terraform Configuration
 
+Change directory into the folder specific to this lab.
+For example: `cd terraform-workshop/lab_01/`.
+
+Add a single Resource Group resource to `main.tf`. Replace `{PREFIX}` with your initials or something unique. i.e `jb-my-rg`
 ``` hcl
 provider "azurerm" {
   features {}
@@ -29,9 +28,11 @@ resource "azurerm_resource_group" "main" {
 }
 ```
 
+> NOTE: It is critical that `{PREFIX}` is unique if you are sharing an Azure subscription.  Try using your initials or some other identifier.
+
 ### Authenticate To Azure
 
-Login via the azure cli:
+Login via the azure cli
 
 ```sh
 az login
@@ -46,9 +47,7 @@ A helpful way to verify your set subscription is to use this azure cli command. 
 az account list --output=table
 ```
 
-**More Information on Authentication**
-
-For documentation on other ways to authenticate, check out this [documentation](https://www.terraform.io/docs/providers/azurerm/guides/service_principal_client_secret.html)
+> For documentation on other ways to authenticate, check out this [documentation](https://www.terraform.io/docs/providers/azurerm/guides/service_principal_client_secret.html)
 
 ### Run the Terraform Workflow
 
@@ -175,17 +174,26 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 </p>
 </details>
 
-Navigate to the Azure portal and verify the new resource group exists.
+### Verify in the Azure Portal
+
+Navigate to the [Azure portal](https://portal.azure.com/) and verify the new resource group exists.
+
+![Resource Group]("../../img/ResourceGroup.png)
 
 ### Cleanup
 
-When you are done, destroy the infrastructure, you no longer need it.
+When you are done, destroy the infrastructure.
 
-The output will look ***similar*** to this:
+Because the infrastructure is now managed by Terraform, we can destroy easily with a Terraform command.
+
+Run a `terraform destroy` and follow the prompts to remove the infrastructure.
 
 ```sh
 terraform destroy
 ```
+
+<details><summary>View Output</summary>
+<p>
 
 ```sh
 $ terraform destroy
@@ -222,10 +230,13 @@ azurerm_resource_group.main: Destruction complete after 47s
 
 Destroy complete! Resources: 1 destroyed.
 ```
+</p>
+</details>
 
-Because the infrastructure is now managed by Terraform, we can destroy just like before.
+## Advanced areas to explore
 
-Run a `terraform destroy` and follow the prompts to remove the infrastructure.
+  1. Run the plan command with the -out option and apply that output.
+  2. Add tags to each resource.
 
 ## Next Steps
 
@@ -234,3 +245,5 @@ In the next lab, we are going to look at using data sources.  Execute the terraf
 ## Resources
 
 - [Terraform Azure Provider](https://www.terraform.io/docs/providers/azurerm/index.html)
+- [AzureRM Resource Group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html)
+- [Terraform Workflow](https://www.terraform.io/guides/core-workflow.html)
