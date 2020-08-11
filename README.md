@@ -19,4 +19,4 @@ In order to complete this lab, the following is required:
 - Outputs
 - Remote State using the Azure backend
 - Terraform Modules
-- Count, For_Each, Dynamic Blocks
+- Count and For_Each
