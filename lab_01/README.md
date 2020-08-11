@@ -171,6 +171,7 @@ azurerm_resource_group.main: Creation complete after 1s [id=/subscriptions/6a3a8
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
+
 </p>
 </details>
 
@@ -237,6 +238,7 @@ Destroy complete! Resources: 1 destroyed.
 
   1. Run the plan command with the -out option and apply that output.
   2. Add tags to each resource.
+  3. Run the apply command with -auto-approve.
 
 ## Next Steps
 
