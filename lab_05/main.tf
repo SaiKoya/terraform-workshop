@@ -47,7 +47,7 @@ resource "azurerm_storage_account" "example" {
 
 module "messaging" {
   ## path is slightly different than lab due to folder structure
-  source = "../modules/messaging"
+  source = "./modules/messaging"
   # use the first storage account name in the list
   storage_account_name = element(azurerm_storage_account.example.*.name, 0)
 }

@@ -1,6 +1,6 @@
 # terraform-workshop [![Generic badge](https://img.shields.io/badge/Development-InProgress-green.svg)](https://shields.io/)
 
-This is a repository that contains labs for a Terraform workshop.
+This is a repository that contains labs for a crash course Terraform workshop.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ In order to complete this lab, the following is required:
 - Terraform installed
 - An Azure Subscription that you have contributor rights.
 
-## Expected Results for the workshop
+## Topics Covered in Labs
 
 - Execute the Terraform workflow (init, plan, apply, destroy)
 - Create Azure Resources
@@ -19,3 +19,4 @@ In order to complete this lab, the following is required:
 - Outputs
 - Remote State using the Azure backend
 - Terraform Modules
+- Count, For_Each, Dynamic Blocks
