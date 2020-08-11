@@ -2,44 +2,31 @@
 
 ## Lab Overview
 
-In this lab, you will learn:
+In this lab, you are going to add new Azure resources to the resource group created in the previous lab.
+
+You will learn:
 
 * How to use a data source
 * How to use variables and outputs
 * String interpolation
-  
----
 
 ## Lab Exercise
 
-### Get Started
+### Variables
 
-* Change directory into a folder specific to this lab.
-* For example: `cd terraform-workshop/lab_02/`.
-* Create a file named `main.tf`
-* Authenticate as instructed by [Lab 01]("../../../lab_01/README.md) if necessary
+Change directory into a folder specific to this lab. For example: `cd terraform-workshop/lab_02/`.
 
-### Add the AzureRm Provider
+> Authenticate as instructed by [Lab 01]("../../../lab_01/README.md) if necessary
 
-``` hcl
-provider "azurerm" {
-  features {}
-}
-```
-
-### Input Variables
-
-Add a variable so that a prefix can be passed in and used for naming resources.
+Add an input variable so that a prefix can be passed in and used for naming resources.
 
 ``` hcl
 variable "prefix" {}
 ```
 
-### Local Variables
-
 Create a locals variable block. In this block we are going to define local variables and use string interpolation to build resource names.
 
-In this block, we will leverage the `prefix` input variable to create a resource group name and storage account name that will be used by our resources.
+Use the `prefix` input variable to create a resource group name and storage account name that will be used to name the resources.
 
 ``` hcl
 locals {
@@ -50,9 +37,11 @@ locals {
 }
 ```
 
+> Note: Azure Storage accounts need to be globally unique
+
 ### Data Source
 
-Use the terraform data source block instead of the resource block.  This block gives us access to the resource that is not managed by the Terraform state file.
+Use the terraform `data source` block instead of the resource block.  The `data source` allows Terraform configuration to make use of information defined outside of Terraform, or defined by another Terraform Configuration.
 
 ``` hcl
 data "azurerm_resource_group" "example" {
@@ -60,7 +49,7 @@ data "azurerm_resource_group" "example" {
 }
 ```
 
-### Create Resources
+### Write Configuration For Resources
 
 ``` hcl
 resource "azurerm_storage_account" "example" {
@@ -82,7 +71,9 @@ resource "azurerm_storage_container" "example" {
 }
 ```
 
-## Outputs
+## Write Configuration Outputs
+
+Output values are like the return values of a Terraform module.
 
 Add output blocks for the storage account name and container name.
 
@@ -100,7 +91,7 @@ output "container_name" {
 
 Run the Terraform workflow as described in lab 01.
 
-When executing the Terraform plan and apply, we will supply the variable `prefix`.
+When executing the Terraform plan and apply, supply the variable `prefix`.
 
 ``` sh
 terraform init
@@ -144,7 +135,11 @@ container_name = mycontainer
 storage_account_name = jbmystrx9102
 ```
 
----
+## Advanced Areas to Explore
+
+1. Use -var-file to pass variables using a `tfvars` file
+2. Supply variable type, description, and default values
+3. Explore variable definition precedence
 
 ## Resources
 
