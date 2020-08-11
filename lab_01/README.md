@@ -246,4 +246,4 @@ In the next lab, we are going to look at using data sources.  Execute the terraf
 
 - [Terraform Azure Provider](https://www.terraform.io/docs/providers/azurerm/index.html)
 - [AzureRM Resource Group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html)
-- [Terraform Workflow](https://www.terraform.io/guides/core-workflow.html)
+- [Terraform Authentication](https://www.terraform.io/docs/providers/azurerm/guides/service_principal_client_secret.html)
