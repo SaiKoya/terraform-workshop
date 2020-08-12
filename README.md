@@ -8,7 +8,7 @@ In order to complete this lab, the following is required:
 
 - Azure CLI
 - Terraform installed
-- An Azure Subscription that you have contributor rights.
+- An Azure subscription with permissions to create resource groups and resources
 
 ## Topics Covered in Labs
 
