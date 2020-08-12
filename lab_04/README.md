@@ -2,7 +2,9 @@
 
 ## Lab Overview
 
-In this lab, you will learn:
+In this lab, you are going to take a look at Terraform modules and how to source them.
+
+You will learn:
 
 * What is a module
 * How to create a module
@@ -10,31 +12,28 @@ In this lab, you will learn:
 
 ## Lab Exercise
 
-### Get Started
-
-* Change directory into a folder specific to this lab.
-* For example: `cd terraform-workshop/lab_04/`.
-* Authenticate as instructed by [Lab 01]("../../../lab_01/README.md) if necessary
-* Ensure that the resources created [Lab 02]("../../../lab_02/README.md) still exist
-* Ensure that the remote state is configured [Lab 03]("../../../lab_03/README.md) still exist
-
 ### Modules
 
 A module is a container for multiple resources that can be used together.  Often times these are used to create lightweight abstractions that describe your infrastructure, or enforce cloud policies such a security and naming conventions.
 
 Up until now, the labs have primarily used the main.tf file in the working directory.  All `.tf` files in the working directory are merged together to make the `root module`.
 
-In this lab, we are going to use the `isolated azure function module`.  This module creates 3 resources and enforces our naming convention via local variables.  It also has 3 outputs so that other Terraform resources or modules can get access to the modules names.
+In this lab, we are going to use the `isolated azure function module`.  This module creates 3 resources and enforces our naming convention via local variables.  It also has 3 outputs so that other Terraform resources or modules can get access to the resource names.
 
-### Reference a local module
+> Note: Outputs to modules allow you to expose data
+
+### Get Started
+
+Change directory into a folder specific to this lab. For example: cd terraform-workshop/lab_04/.
+
+> Authenticate as instructed by Lab 01 if necessary  
+Ensure remote state is enabled as instructed by lab 03
+
+### Write configuration
 
 Open `main.tf` and add the following configuration.  
 
-This configuration:
-
-* declares a module named `my_azure_function`
-* It's source points to the local file path
-* It provides the modules required input variables
+This configuration declares a module named `my_azure_function` (you can change this name if you like).  The module is sourced from the local file path and provides all required input variables such as prefix, location, and resource_group_name.
 
 ``` hcl
 module "my_azure_function" {
@@ -659,9 +658,18 @@ azure_function_name = jb-lab-fn
 </p>
 </details>
 
-![Created Resources]("../img/Resources.png")
+## Validate Resources
+
+Navigate to the Azure portal to validate that the resources were created.
+
+![Created Resources](img/Resources.png)
 
 ---
+
+## Clean Up
+
+Clean up the resources using `terraform destroy`.
+
 
 ``` sh
 terraform destroy
@@ -867,8 +875,10 @@ module.my_azure_function.azurerm_app_service_plan.module: Destruction complete a
 Destroy complete! Resources: 4 destroyed.
 ```
 </p>
+</details>
 
-## Bonus
+## Source Modules Using Github
+
 Use the GitHub Module source to source the `isolated_azure_function` module from source control instead of the local file system.
 
 ``` hcl
@@ -880,6 +890,10 @@ module "my_azure_function" {
 }
 
 ```
+
+## Advanced Areas to Explore
+
+1. Use the [terraform destroy](https://www.terraform.io/docs/commands/destroy.html) -target option to destroy the module directly
 
 ## Resources
 
