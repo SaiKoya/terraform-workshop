@@ -241,6 +241,7 @@ Destroy complete! Resources: 1 destroyed.
   1. Run the plan command with the -out option and apply that output.
   2. Add tags to each resource.
   3. Run the apply command with -auto-approve.
+  4. Use `terraform fmt` to format your code
 
 ## Next Steps
 

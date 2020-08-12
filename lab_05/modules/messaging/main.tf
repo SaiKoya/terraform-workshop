@@ -9,7 +9,7 @@ variable "enable_dead_lettering" {
 }
 
 locals {
-    queue_list= var.enable_dead_lettering ? ["inbox", "outbox", "inbox-dl"] : ["inbox", "outbox"]
+    queue_list = var.enable_dead_lettering ? ["inbox", "outbox", "inbox-dl"] : ["inbox", "outbox"]
 }
 
 resource "azurerm_storage_queue" "example" {

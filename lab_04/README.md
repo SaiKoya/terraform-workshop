@@ -22,14 +22,12 @@ In this lab, we are going to use the `isolated azure function module`.  This mod
 
 > Note: Outputs to modules allow you to expose data
 
-### Get Started
+### Write configuration
 
 Change directory into a folder specific to this lab. For example: cd terraform-workshop/lab_04/.
 
 > Authenticate as instructed by Lab 01 if necessary  
 Ensure remote state is enabled as instructed by lab 03
-
-### Write configuration
 
 Open `main.tf` and add the following configuration.  
 
