@@ -2,21 +2,14 @@
 
 ## Lab Overview
 
-In this lab, you will learn:
+In this lab, you will store Terraform state remotely using the Azure Backend.
+
+You will learn:
 
 * Deeper dive into Terraform state
 * Setup remote state using Azure Backend
-  
----
 
 ## Lab Exercise
-
-### Get Started
-
-* Change directory into a folder specific to this lab.
-* For example: `cd terraform-workshop/lab_03/`
-* Authenticate as instructed by [Lab 01]("../../../lab_01/README.md) if necessary
-* Ensure that the resources created [Lab 02]("../../../lab_02/README.md) still exist
 
 ### Understanding Terraform state
 
@@ -67,16 +60,24 @@ By default, Terraform stores state locally in the `terraform.tfstate` file, but 
 
 ### Add configuration for remote storage in Azure
 
-This excercise uses the storage account and resource group from the previous lab to configure remote state.
+This exercise uses the storage account and resource group from the previous lab to configure remote state.
 
-The `main.tf` file has already been started for you in this lab.  Modify the backend block in `main.tf` so that it uses the resources defined in lab 02.  It should look similiar to the below configuration.
+Modify the backend block in `main.tf` so that it uses the resources defined in lab 02.  It should look similar to the below configuration.
 
 ``` hcl
 terraform {
     backend "azurerm" {
+
+    # your resource group name
     resource_group_name  = "jb-my-rg"
+
+    # your storage account name
     storage_account_name = "jbmystrx9102"
+
+    # your container name
     container_name       = "mycontainer"
+
+    # name of the state file
     key                  = "terraform.tfstate"
   }
 }
@@ -88,7 +89,7 @@ terraform {
 terraform init
 ```
 
-After initialization, you can see that the terraform.tfstate file is now located in the azure storage container instead of being stored on the local file system.
+After initialization, validate that you see the terraform.tfstate file is now located in the azure storage container instead of being stored on the local file system.
 
 ![State File]("../img/../../img/RemoteStateFile.png)
 
@@ -247,14 +248,13 @@ can't guarantee that exactly these actions will be performed if
 terraform apply
 ```
 
-Notice that the Azure Backend is acquiring a lease on the blob storage.  This locks the state file so that only 1 apply can be made at a time.
-
-*Note:* Sometimes the lease can get stuck or not unlocked.  If this happens, the lease needs to be manually broken. This can be done by selecting the blob and selecting the `Break Lease` option.
+Notice that the Azure Backend is acquiring a lease on the blob storage.  This locks the state file so that only 1 apply can be made at a time. This is critical for working with Terraform in a CI/CD or team environment.
 
 Explore the state file by navigating to the blob using the Azure Portal. Click on it and select the `Edit` tab.  Notice that all the resources are defined here.  
 
-*IMPORTANT*
-It is important to note that secrets such as access keys, passwords, etc are stored in plain text in the state file.  It is important to ensure that the state file is encrypted and access follows least privilege.
+>Note: Sometimes the lease can get stuck or not unlocked.  If this happens, the lease needs to be manually broken. This can be done by selecting the blob and selecting the `Break Lease` option.
+
+> *Important*: Notice that secrets such as access keys, passwords, etc are stored in plain text in the state file.  It is important to ensure that the state file is encrypted and access follows least privilege.
 
 <details><summary>View Output</summary>
 <p>
@@ -406,9 +406,17 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 </p>
 </details>
 
+## Validate Resources
+
+Navigate to your resource group using the Azure Portal and validate that the resources were created successfully.
+
 ![Created Resources](img/Resources.png)
 
 ---
+
+## Clean Up
+
+We no longer need these resources.  Run `terraform destroy` to clean up your resources and inspect the state file afterwards.
 
 ``` sh
 terraform destroy
@@ -528,6 +536,12 @@ Destroy complete! Resources: 2 destroyed.
 </p>
 </details>
 
+## Advanced Areas to Explore
+
+1. Explore [importing state](https://www.terraform.io/docs/import/index.html).
+2. Explore [sensitive data](https://www.terraform.io/docs/state/sensitive-data.html) considerations of state.
+3. Explore [workspaces](https://www.terraform.io/docs/state/workspaces.html)
+   
 ## Resources
 
 * [Terraform State](https://www.terraform.io/docs/state/index.html)
