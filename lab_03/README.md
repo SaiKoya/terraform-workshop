@@ -60,6 +60,10 @@ By default, Terraform stores state locally in the `terraform.tfstate` file, but 
 
 ### Add configuration for remote storage in Azure
 
+Change directory into a folder specific to this lab. For example: cd terraform-workshop/lab_03/.
+
+> Authenticate as instructed by Lab 01 if necessary
+
 This exercise uses the storage account and resource group from the previous lab to configure remote state.
 
 Modify the backend block in `main.tf` so that it uses the resources defined in lab 02.  It should look similar to the below configuration.
