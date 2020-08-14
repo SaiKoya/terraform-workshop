@@ -545,6 +545,7 @@ Destroy complete! Resources: 2 destroyed.
 1. Explore [importing state](https://www.terraform.io/docs/import/index.html).
 2. Explore [sensitive data](https://www.terraform.io/docs/state/sensitive-data.html) considerations of state.
 3. Explore [workspaces](https://www.terraform.io/docs/state/workspaces.html)
+4. Explore [terraform refresh](https://www.terraform.io/docs/commands/refresh.html)
    
 ## Resources
 
