@@ -38,7 +38,7 @@ module "my_azure_function" {
     source = "./modules/isolated_azure_function"
     prefix = var.prefix
     location = data.azurerm_resource_group.example.location
-    resource_group_name = data.resource_group_name.example.name
+    resource_group_name = data.azurerm_resource_group.example.name
 }
 ```
 
