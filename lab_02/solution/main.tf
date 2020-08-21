@@ -1,7 +1,4 @@
-variable "prefix" {
-  type = string
-  default = "jb"
-}
+variable "prefix" {}
 
 locals {
   resource_group_name = "${var.prefix}-my-rg"
