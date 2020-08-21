@@ -1,7 +1,4 @@
-variable "prefix" {
-  type    = string
-  default = "jb"
-}
+variable "prefix" {}
 
 terraform {
   backend "azurerm" {
