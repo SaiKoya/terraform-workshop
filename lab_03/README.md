@@ -93,10 +93,6 @@ terraform {
 terraform init
 ```
 
-After initialization, validate that you see the terraform.tfstate file is now located in the azure storage container instead of being stored on the local file system.
-
-![State File]("../img/../../img/RemoteStateFile.png)
-
 ---
 
 ``` sh
@@ -411,6 +407,11 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 </details>
 
 ## Validate Resources
+
+Validate that you see the terraform.tfstate file is now located in the azure storage container instead of being stored on the local file system.
+
+![State File]("../img/../../img/RemoteStateFile.png)
+
 
 Navigate to your resource group using the Azure Portal and validate that the resources were created successfully.
 
