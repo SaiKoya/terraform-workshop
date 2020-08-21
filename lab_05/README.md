@@ -69,7 +69,7 @@ Write the configuration for the module in `main.tf` by passing in the first stor
 
 ```hcl
 module "messaging" {
-  source = "../modules/messaging"
+  source = "./modules/messaging"
   # use the first storage account name in the list
   storage_account_name = element(azurerm_storage_account.example.*.name, 0)
 }
@@ -81,7 +81,7 @@ After inspecting the results, modify the module by enabling dead lettering.
 
 ```hcl
 module "messaging" {
-  source = "../modules/messaging"
+  source = "./modules/messaging"
   # use the first storage account name in the list
   storage_account_name = element(azurerm_storage_account.example.*.name, 0)
   enable_dead_lettering = true
