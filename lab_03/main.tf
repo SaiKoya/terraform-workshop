@@ -27,7 +27,7 @@ data "azurerm_resource_group" "example" {
 }
 
 data "azurerm_storage_account" "example" {
-  name                = "jbmystrx9102"
+  name                = "${var.prefix}mystrx9102"
   resource_group_name = data.azurerm_resource_group.example.name
 }
 
