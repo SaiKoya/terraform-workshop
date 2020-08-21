@@ -22,7 +22,7 @@ Ensure remote state is enabled as instructed by lab 03
 Use the count keyword to create multiple resources.
 
 ```hcl
-resource "azurerm_storage_account" "module" {
+resource "azurerm_storage_account" "example" {
   count                    = 3
   # use count.index to ensure that the resource has a unique name
   name                     = "${local.storage_account_name}${count.index}"
