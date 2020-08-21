@@ -35,7 +35,7 @@ This configuration declares a module named `my_azure_function` (you can change t
 
 ``` hcl
 module "my_azure_function" {
-    source = "../modules/isolated_azure_function"
+    source = "./modules/isolated_azure_function"
     prefix = var.prefix
     location = data.azurerm_resource_group.example.location
     resource_group_name = data.resource_group_name.example.name
