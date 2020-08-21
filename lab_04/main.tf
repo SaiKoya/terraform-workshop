@@ -16,6 +16,10 @@ provider "azurerm" {
   features {}
 }
 
+locals {
+  resource_group_name   = "${var.prefix}-my-rg"
+}
+
 data "azurerm_resource_group" "example" {
   name = local.resource_group_name
 }
