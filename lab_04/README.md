@@ -895,6 +895,6 @@ module "my_azure_function" {
 
 ## Resources
 
-[Modules](https://www.terraform.io/docs/modules/index.html)
-[Module Sources](https://www.terraform.io/docs/modules/sources.html)
-[Random Provider](https://registry.terraform.io/providers/hashicorp/random/latest/docs)
+- [Modules](https://www.terraform.io/docs/modules/index.html)
+- [Module Sources](https://www.terraform.io/docs/modules/sources.html)
+- [Random Provider](https://registry.terraform.io/providers/hashicorp/random/latest/docs)
