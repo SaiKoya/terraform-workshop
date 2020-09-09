@@ -1,6 +1,5 @@
 variable "prefix" {
   type    = string
-  default = "jb"
 }
 
 terraform {
