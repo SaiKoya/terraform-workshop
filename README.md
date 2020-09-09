@@ -7,7 +7,7 @@ This is a repository that contains labs for a crash course Terraform workshop.
 In order to complete this lab, the following is required:
 
 - Azure CLI
-- Terraform version installed
+- Terraform >0.12 installed
 - An Azure subscription with permissions to create resource groups and resources
 
 ## Topics Covered in Labs
