@@ -2,7 +2,7 @@
 
 ## Lab Overview
 
-In this lab, you will use Terraform to create azure resources in your Azure subscription.
+In this lab, you will use Terraform to create Azure resources in your Azure subscription.
 
 You will learn:
 
