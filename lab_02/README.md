@@ -93,6 +93,7 @@ Run the Terraform workflow as described in lab 01.
 
 When executing the Terraform plan and apply, supply the variable `prefix`.
 
+> NOTE: Make sure that you replace `jb` with `your` prefix value from the previous lab
 ``` sh
 terraform init
 
